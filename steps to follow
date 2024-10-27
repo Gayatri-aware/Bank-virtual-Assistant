@@ -1,0 +1,56 @@
+steps to Build chatbot using Rasa
+
+on Vs code or pycharm 
+1.create project with virtual environment
+2.then go to project folder and open terminal
+3.install rasa in terminal using
+   pip install rasa
+Create a New Rasa Project
+
+4.Create a new project with default files:
+     rasa init --no-prompt
+5.This generates the basic structure with files like nlu.yml, stories.yml, domain.yml, and actions.py.
+
+Define Intents and Entities (NLU Data)
+
+Edit data/nlu.yml to define various user intents and entities.
+      nlu:
+- intent: greet
+  examples: |
+    - hello
+    - hi there
+    - hey
+Design Conversation Flows (Stories)
+
+Add conversational paths in data/stories.yml to define how the chatbot should respond.
+stories:
+- story: greet user
+  steps:
+  - intent: greet
+  - action: utter_greet
+Configure Responses (Domain)
+
+Edit domain.yml to configure responses, intents, entities, and actions.
+responses:
+  utter_greet:
+    - text: "Hello! How can I assist you today?"
+Train the Model
+
+Train the NLU and Core models
+ using terminal
+   rasa train
+Run the Chatbot
+
+Start the Rasa server
+ rasa run
+For interactive testing, use
+   rasa shell
+ Custom Actions (Optional)
+
+Add custom logic in actions.py if your bot needs to perform external API calls or complex responses.
+Start the action server:
+ rasa run actions
+
+Deployment 
+
+Deploy the chatbot on a server and integrate it with messaging platforms like WhatsApp, Slack, or a web widget.
